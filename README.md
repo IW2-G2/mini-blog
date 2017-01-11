@@ -3,7 +3,7 @@
 
 ## install
 
-Pour commencer à travaillé il faut créer un fichier my_setting.ini, dans le dossier config.
+Pour commencer à travaillé il faut créer un dossier config, puis un fichier my_setting.ini, dans le dossier config.
 
 dans se fichier il faut ecrire :
 
