@@ -1,13 +1,7 @@
 <?php
 	session_start();
-    require "config/constants.php";
-	require dirname(__FILE__) . '/manager/manager.class.php';
-	$manager = new Manager();
+  require "config/constants.php";
+  require "vendor/autoload.php";
+	require "core/Routing.class.php";
 
-    require "vendor/autoload.php";
-
-    include "config/Routing.php";
-    $route = new Routing();
-
-
-
+  $route = new core\Routing();
