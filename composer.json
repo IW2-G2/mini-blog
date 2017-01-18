@@ -1,0 +1,15 @@
+{
+    "name": "camille/apprendre_test_unit",
+    "require": {
+        "phpunit/phpunit": "^5.7"
+    },
+    "autoload": {
+      "psr-4": { "": "src/"}
+    },
+    "authors": [
+        {
+            "name": "campsx",
+            "email": "cam.laurent@outlook.com"
+        }
+    ]
+}
