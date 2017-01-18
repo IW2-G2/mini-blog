@@ -16,3 +16,15 @@ schema = nom_db
 username = root
 password =
 ```
+
+Edit: avant de commencer à travailler n'oubliez pas d'excécuter l'installation des dépendances et de l'autoloader composer
+
+```
+composer install
+```
+
+ou 
+
+```
+./composer.phar install
+```
