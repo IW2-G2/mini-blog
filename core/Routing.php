@@ -48,7 +48,6 @@ class Routing{
 			echo "Le fichier du controller n'existe pas";
 			return false;
 		}
-		include $pathController;
 
 		// for autoload
 		$this->controllerName = CONTROLLEURS_FOLDER_PATH.$this->controllerName;
