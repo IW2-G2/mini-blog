@@ -1,10 +1,10 @@
 <?php
-
-class MyPDO extends PDO
+namespace Manager;
+class MyPDO extends \PDO
 {
-    public function __construct($file = './config/my_setting.ini')
+    public function __construct($file = 'core/my_setting.ini')
     {
-        if (!$settings = parse_ini_file($file, TRUE)) throw new exception('Unable to open ' . $file . '.');
+        if (!$settings = parse_ini_file($file, TRUE)) throw new \exception('Unable to open ' . $file . '.');
         
         $dns = $settings['database']['driver'] .
         ':host=' . $settings['database']['host'] .

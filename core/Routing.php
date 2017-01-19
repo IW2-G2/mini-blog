@@ -1,11 +1,12 @@
 <?php
-
+namespace Core;
 
 class Routing
 {
-    private  $acceptedRoute;
+    private $acceptedRoute;
     private $route;
     private $classname;
+    private $errorTrigger;
 
     public function __construct()
     {
@@ -33,8 +34,11 @@ class Routing
         if(!empty($route[0]) && isset($this->acceptedRoute[$route[0]])){
             return $route;
         }else{
+
             if(!empty($route[0])){
-                return array("404");
+                new \App\Controller\Error();
+                $this->errorTrigger = true;
+
             }else{
                 return array("index");
             }
@@ -42,9 +46,12 @@ class Routing
     }
 
     private function checkRouting(){
-        $this->classname = ucfirst($this->route[0])."Controller";
-        $class = "App\\Controller\\".$this->classname;
-        new $class(array_shift($this->route));
+
+        if(!$this->errorTrigger){
+            $this->classname = ucfirst($this->acceptedRoute[strtolower($this->route[0])]);
+            $class = APP_NAMESPACE."\\Controller\\".$this->classname;
+            new $class(array_shift($this->route));
+        }
 
 
     }

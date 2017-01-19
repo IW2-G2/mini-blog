@@ -1,6 +1,8 @@
 <?php
+namespace Manager;
+use Manager\MyPDO;
 
-require dirname(__FILE__) . '/my_pdo.class.php';
+require dirname(__FILE__) . '/my_pdo.php';
 
 /**
 *
@@ -12,7 +14,7 @@ class Manager
 
     public function __construct()
     {
-        $this->pdo = new MyPDO(dirname(dirname(__FILE__)) . '/config/my_setting.ini');
+        $this->pdo = new MyPDO(dirname(dirname(__FILE__)) . '/core/my_setting.ini');
     }
 
 

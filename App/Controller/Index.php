@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-class IndexController
+class Index
 {
     public function __construct()
     {

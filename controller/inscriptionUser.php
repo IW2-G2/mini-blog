@@ -1,7 +1,7 @@
 <?php
 // pour l'exemple
 session_start();
-require_once dirname(dirname(__FILE__)) . '/manager/manager.class.php';
+require_once dirname(dirname(__FILE__)) . '/manager/manager.php';
 
 $errors = [];
 $manager = new Manager();
