@@ -1,4 +1,4 @@
-Options -MultiViews
+Options -MultiViews -Indexes
 RewriteEngine On
 RewriteBase /mini-blog/
 RewriteCond %{REQUEST_FILENAME} !-d
