@@ -42,7 +42,7 @@ class Routing{
 
 
 	public function checkRoute(){
-		$pathController = "App/controllers/".$this->controllerName.".php";
+		$pathController = "App/Controllers/".$this->controllerName.".php";
 
 		if( !file_exists($pathController) ){
 			echo "Le fichier du controller n'existe pas";
@@ -50,16 +50,18 @@ class Routing{
 		}
 
 		// for autoload
-		$this->controllerName = CONTROLLEURS_FOLDER_PATH.$this->controllerName;
-
-		if ( !class_exists($this->controllerName)  ){
+		//$this->controllerName = CONTROLLEURS_FOLDER_PATH.$this->controllerName;
+		//var_dump(str_replace("\\","\\",$this->controllerName));
+		if ( !class_exists(CONTROLLERS_NAMESPACE_PATH.$this->controllerName)  ){
 			echo "Le fichier du controller existe mais il n'y a pas de classe";
 			return false;
 		}
-		if(  !method_exists($this->controllerName, $this->actionName) ){
+		if(  !method_exists(CONTROLLERS_NAMESPACE_PATH.$this->controllerName, $this->actionName) ){
 			echo "L'action n'existe pas";
 			return false;
 		}
+
+		$this->controllerName = CONTROLLERS_NAMESPACE_PATH.$this->controllerName;
 		return true;
 	}
 
