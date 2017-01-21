@@ -6,6 +6,9 @@
   <h2>Titre : <?php echo $article['title'] ?></h2>
   <p>Auteur : <?php echo $article['autor'] ?></p>
   <p>Créé le <?php echo $article['created_at'] ?></p>
+  <a title="<?php echo $article['title'] ?>" href="<?php echo $data['urlArticle'].$article['id'] ?>">
+    Voir
+  </a>
 <?php endforeach; ?>
 
 

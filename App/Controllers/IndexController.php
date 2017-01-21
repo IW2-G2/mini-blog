@@ -11,6 +11,7 @@ class IndexController {
 		$data = [];
     $ArticleModel = new ArticleModel();
 		$data['articles'] = $ArticleModel->getListOfArticles();
+		$data['urlArticle'] = APP_BASE_PATH."article/view/";
 
 		require VIEWS_FOLDER_PATH."index.view.php";
 	}
