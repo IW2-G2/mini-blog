@@ -45,23 +45,26 @@ class Routing{
 		$pathController = "App/Controllers/".$this->controllerName.".php";
 
 		if( !file_exists($pathController) ){
-			echo "Le fichier du controller n'existe pas";
+			// for debug
+			//echo "Le fichier du controller n'existe pas";
 			return false;
 		}
 
 		// for autoload
-		//$this->controllerName = CONTROLLEURS_FOLDER_PATH.$this->controllerName;
-		//var_dump(str_replace("\\","\\",$this->controllerName));
-		if ( !class_exists(CONTROLLERS_NAMESPACE_PATH.$this->controllerName)  ){
-			echo "Le fichier du controller existe mais il n'y a pas de classe";
-			return false;
-		}
-		if(  !method_exists(CONTROLLERS_NAMESPACE_PATH.$this->controllerName, $this->actionName) ){
-			echo "L'action n'existe pas";
+		$this->controllerName = CONTROLLERS_NAMESPACE_PATH.$this->controllerName;
+
+		if (!class_exists($this->controllerName)) {
+			// for debug
+			//echo "Le fichier du controller existe mais il n'y a pas de classe";
 			return false;
 		}
 
-		$this->controllerName = CONTROLLERS_NAMESPACE_PATH.$this->controllerName;
+		if (!method_exists($this->controllerName, $this->actionName)) {
+			// for debug
+			//echo "L'action n'existe pas";
+			return false;
+		}
+
 		return true;
 	}
 
@@ -76,7 +79,7 @@ class Routing{
 	}
 
 	public function page404(){
-		die("<p>Erreur 404</p>");
+		require VIEWS_FOLDER_PATH."404.view.php";
 	}
 
 

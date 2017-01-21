@@ -8,9 +8,11 @@ class IndexController {
 
 	public function indexAction($params)
   {
-      $ArticleModel = new ArticleModel();
+		$data = [];
+    $ArticleModel = new ArticleModel();
+		$data['articles'] = $ArticleModel->getListOfArticles();
 
-			require VIEWS_FOLDER_PATH."index.view.php";
+		require VIEWS_FOLDER_PATH."index.view.php";
 	}
 
 	public function welcomeAction($params)

@@ -18,37 +18,42 @@ class ArticleModel
 
 
   /**
-  * param : string $mail
-  * return : bool
+  * param : int $id
+  * return : array
   */
-  public function getCheckMail($email)
+  public function getOneArticle($id)
   {
-      $sql = "SELECT * FROM `user` WHERE `email`= :email";
+      $sql = "SELECT * FROM `article` WHERE `id`= :id AND active = 1";
       $req = $this->pdo->prepare($sql);
       $req->execute([
-        'email' => $email,
+        'id' => $id,
         ]);
-      $data = $req->fetch();
-
-      if (empty($data)){
-        return true;
-      }
-      return false;
+      $article = $req->fetch(MyPDO::FETCH_ASSOC);
+      return $article;
   }
 
-
   /**
-  *  param : string $cadeauName
-  *  param : int $userId
+  * param : int $limit
+  * param : int $offset
+  * return : array
   */
-  public function setAjouterCadeau($cadeauName, $userId)
+  public function getListOfArticles($limit = null, $offset = null)
   {
-      $sql = "INSERT INTO `cadeau`(`nom`, `user_id`) VALUES (:nom, :userid)";
+    if (is_int($limit) && is_int($offset)) {
+      $sql = "SELECT * FROM `article` WHERE active = 1 LIMIT :limit OFFSET :offset";
       $req = $this->pdo->prepare($sql);
-      $req->execute(array(
-        'userid' => $userId,
-        'nom' => $cadeauName
-      ));
+      $req->execute([
+        'limit' => $limit,
+        'offset' => $offset,
+        ]);
+    } else {
+      $sql = "SELECT * FROM `article` WHERE active = 1";
+      $req = $this->pdo->prepare($sql);
+      $req->execute();
+    }
+
+    $article = $req->fetchAll(MyPDO::FETCH_ASSOC);
+    return $article;
   }
 
 }
