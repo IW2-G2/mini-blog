@@ -1,23 +1,23 @@
-# mini-blog
+# Mini-llog
 
 
-## install
+## Installation
 
-Pour commencer à travaillé il faut créer un dossier config, puis un fichier my_setting.ini, dans le dossier config.
+Pour commencer, il faut créer un dossier 'config' à la racine du projet, puis créer un fichier 'my_setting.ini', dans ce dossier.
 
-dans se fichier il faut ecrire :
+Ensuite, il faut écrire les paramètres suivant dans le fichier 'my_setting.ini' et les adapters à votre configuration de base de données : 
 
 ```
 [database]
 driver = mysql
 host = localhost
 port = 3306
-schema = nom_db
+schema = mini_blog
 username = root
 password =
 ```
 
-Edit: avant de commencer à travailler n'oubliez pas d'excécuter l'installation des dépendances et de l'autoloader composer
+/!\ Avant de commencer à travailler, n'oubliez pas d'excécuter l'installation des dépendances et de l'autoloader composer
 
 ```
 composer install
