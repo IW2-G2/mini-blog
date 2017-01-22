@@ -7,9 +7,9 @@ use App\Models\ArticleModel;
 class IndexController {
 
 	public function indexAction($params)
-  {
+	{
 		$data = [];
-    $ArticleModel = new ArticleModel();
+		$ArticleModel = new ArticleModel();
 		$data['articles'] = $ArticleModel->getListOfArticles();
 		$data['urlArticle'] = APP_BASE_PATH."article/view/";
 
@@ -17,7 +17,7 @@ class IndexController {
 	}
 
 	public function welcomeAction($params)
-  {
+	{
 		  echo "Welcome";
 	}
 
