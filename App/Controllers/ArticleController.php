@@ -40,13 +40,38 @@ class ArticleController {
 	}
 
 	public function createAction($params)
-	{
-		  echo "Welcome";
+	{		
+		// Si on reçoit des informations après un POST, on les enregistre
+		if ( isset($_POST['title']) && isset($_POST['content']) && isset($_POST['autor'])) {
+			$title=$_POST['title'];
+			$content=$_POST['content'];
+			$autor=$_POST['autor'];
+			$ArticleModel = new ArticleModel();
+			$ArticleModel->createArticle($title, $content, $autor);
+			$index = new IndexController();
+			$index->indexAction($params);
+			return;
+		}
+
+		require VIEWS_FOLDER_PATH."article.create.php";
 	}
 
 	public function removeAction($params)
 	{
-		  echo "Welcome";
+		if ( isset($params[0]) && isset($_POST['remove']) ) {
+			if ($_POST['remove'] == 1) {
+				$id=$params[0];
+				$ArticleModel = new ArticleModel();
+				$ArticleModel->removeArticle($id);
+				$index = new IndexController();
+				$index->indexAction($params);
+				return;
+			}
+		}
+		$data = [];
+		$ArticleModel = new ArticleModel();
+		$data['article'] = $ArticleModel->getOneArticle($params[0]);
+		require VIEWS_FOLDER_PATH."article.remove.php";	
 	}
 
 }

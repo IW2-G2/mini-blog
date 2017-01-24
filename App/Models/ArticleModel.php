@@ -55,14 +55,13 @@ class ArticleModel
   }
 
   /**
-  * param : int $id
+  * param : string $id
   * param : string $title
   * param : string $content
   */
   public function saveArticle($id, $title, $content)
   {
-    if ( !empty($title) && !empty($content) ) {
-      echo "XXX";
+    if ( !empty($id) && !empty($title) && !empty($content) ) {
       $sql = "UPDATE `article` SET title= :title , content= :content WHERE id= :id";
       $req = $this->pdo->prepare($sql);
       $req->execute([
@@ -71,6 +70,55 @@ class ArticleModel
         'content' => $content,
         ]);
     }
+  }
+
+  /**
+  * param : string $id
+  * param : string $title
+  * param : string $content
+  */
+  public function removeArticle($id)
+  {
+    if ( !empty($id) ) {
+      $sql = "DELETE FROM `article` WHERE id= :id";
+      $req = $this->pdo->prepare($sql);
+      $req->execute([
+        'id' => $id,
+        ]);
+    }
+  }
+
+  /**
+  * param : string $title
+  * param : string $content
+  * param : string $autor
+  */
+  public function createArticle($title, $content, $autor)
+  {
+    if ( !empty($title) && !empty($content) && !empty($autor) ) {
+      $id = $this->getMaxIdArticle()+1;
+      $sql = "INSERT INTO `article` (`id`, `title`, `content`, `autor`, `active`, `created_at`, `updated_at`) 
+              VALUES (:id, :title, :content, :autor, 1, NOW(), NOW())";
+      $req = $this->pdo->prepare($sql);
+      $req->execute([
+        'id' => $id,
+        'title' => $title,
+        'content' => $content,
+        'autor' => $autor,
+        ]);
+    }
+  }
+
+  /**
+  * return : string $maxId
+  */
+  public function getMaxIdArticle()
+  {
+    $sql = "SELECT MAX(id) FROM `article`";
+    $req = $this->pdo->prepare($sql);
+    $req->execute();
+    $maxId = $req->fetch(MyPDO::FETCH_ASSOC);
+    return (string)$maxId['MAX(id)'];
   }
 
 }
