@@ -15,8 +15,6 @@ class ArticleModel
       $this->pdo = new MyPDO();
   }
 
-
-
   /**
   * param : int $id
   * return : array
@@ -54,6 +52,25 @@ class ArticleModel
 
     $article = $req->fetchAll(MyPDO::FETCH_ASSOC);
     return $article;
+  }
+
+  /**
+  * param : int $id
+  * param : string $title
+  * param : string $content
+  */
+  public function saveArticle($id, $title, $content)
+  {
+    if ( !empty($title) && !empty($content) ) {
+      echo "XXX";
+      $sql = "UPDATE `article` SET title= :title , content= :content WHERE id= :id";
+      $req = $this->pdo->prepare($sql);
+      $req->execute([
+        'id' => $id,
+        'title' => $title,
+        'content' => $content,
+        ]);
+    }
   }
 
 }
