@@ -28,7 +28,7 @@ class ArticleController {
 			$ArticleModel = new ArticleModel();
 			$ArticleModel->saveArticle($id, $title, $content);
 			// Et on redirige vers l'article en lecture
-			$this->viewAction($params);
+			header('location: ..' .DS. '..' .DS. 'index');
 			return;
 		} else {
 			// Sinon on récupère l'article et on l'affiche en modification
@@ -48,8 +48,7 @@ class ArticleController {
 			$autor=$_POST['autor'];
 			$ArticleModel = new ArticleModel();
 			$ArticleModel->createArticle($title, $content, $autor);
-			$index = new IndexController();
-			$index->indexAction($params);
+			header('location: ..' .DS. '..' .DS. 'index');
 			return;
 		}
 
@@ -63,8 +62,7 @@ class ArticleController {
 				$id=$params[0];
 				$ArticleModel = new ArticleModel();
 				$ArticleModel->removeArticle($id);
-				$index = new IndexController();
-				$index->indexAction($params);
+				header('location: ..' .DS. '..' .DS. 'index');
 				return;
 			}
 		}
