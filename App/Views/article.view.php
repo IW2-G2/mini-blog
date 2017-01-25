@@ -7,6 +7,15 @@
 <p>Créé par <?php echo $data['article']['autor'] ?></p>
 <p>Le <?php echo $data['article']['created_at'] ?></p>
 
+<a title="Editer <?php echo $data['article']['title'] ?>" 
+	href="<?php echo APP_BASE_PATH."article/edit/".$data['article']['id'] ?>">
+	Editer
+</a>
+<a title="Editer <?php echo $data['article']['title'] ?>" 
+	href="<?php echo APP_BASE_PATH."article/remove/".$data['article']['id'] ?>">
+	Supprimer
+</a>
+
 <?php foreach ($data['comment'] as $comment): ?>
   <h2>Titre : <?php echo $comment['title'] ?></h2>
   <p>Auteur : <?php echo $comment['autor'] ?></p>
