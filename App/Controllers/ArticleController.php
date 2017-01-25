@@ -9,6 +9,10 @@ class ArticleController {
 
 	public function viewAction($params)
 	{
+		if(empty($params)) {
+			require VIEWS_FOLDER_PATH."404.view.php";
+			return;
+		}
 		$data = [];
 		$ArticleModel = new ArticleModel();
 		$data['article'] = $ArticleModel->getOneArticle($params[0]);
@@ -20,6 +24,10 @@ class ArticleController {
 
 	public function editAction($params)
 	{
+		if(empty($params)) {
+			require VIEWS_FOLDER_PATH."404.view.php";
+			return;
+		}
 		// Si on reçoit des informations après un POST, on les enregistre
 		if ( isset($params[0]) && isset($_POST['title']) && isset($_POST['content']) ) {
 			$id=$params[0];

@@ -1,12 +1,14 @@
 <?php require VIEWS_LAYOUT_FOLDER_PATH."header.view.php"; ?>
 
-<h1><?php echo $data['article']['title'] ?></h1>
+<div class="article">
+	<h1><?php echo $data['article']['title'] ?></h1>
 
-<p><?php echo $data['article']['content'] ?></p>
+	<p><?php echo $data['article']['content'] ?></p>
 
-<p>Créé par <?php echo $data['article']['autor'] ?></p>
-<p>Le <?php echo $data['article']['created_at'] ?></p>
-<br><br>
+	<br>
+	<p>Créé par <?php echo $data['article']['autor'] ?></p>
+	<p>Le <?php echo $data['article']['created_at'] ?></p>
+</div>
 
 <form method="POST" action="">
 	<label for="title">Confirmer la suppression de cet article :</label>
