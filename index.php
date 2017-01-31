@@ -1,7 +1,7 @@
 <?php
-	//session_start();
+	session_start();
 	require "config/constants.php";
 	require "vendor/autoload.php";
-	require "core/Routing.php";
 
   $route = new core\Routing();
+	$route->runRoute();

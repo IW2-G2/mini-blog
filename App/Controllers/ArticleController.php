@@ -12,11 +12,12 @@ class ArticleController {
 		if(empty($params)) {
 			require VIEWS_FOLDER_PATH."404.view.php";
 			return;
-		}
-		$data = [];
+		}	
 		$ArticleModel = new ArticleModel();
-		$data['article'] = $ArticleModel->getOneArticle($params[0]);
 		$CommentModel = new CommentModel();
+
+		$data = [];
+		$data['article'] = $ArticleModel->getOneArticle($params[0]);
 		$data['comment'] = $CommentModel->getListOfComment($params[0]);
 
 		require VIEWS_FOLDER_PATH."article.view.php";

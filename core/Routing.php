@@ -2,7 +2,7 @@
 
 namespace core;
 
-class Routing{
+class Routing {
 
 	private $uriExploded;
 
@@ -13,38 +13,36 @@ class Routing{
 
 	private $params;
 
-	public function __construct(){
+	public function __construct() {
 		$uri = $_SERVER["REQUEST_URI"];
 		$uri = preg_replace("#".APP_BASE_PATH_PATTERN."#i", "", $uri, 1);
 		$this->uriExploded = explode("/",  trim($uri, "/")   );
 		$this->setController();
 		$this->setAction();
 		$this->setParams();
-		$this->runRoute();
-
 	}
 
-	public function setController(){
+	public function setController() {
 		$this->controller = (empty($this->uriExploded[0]))?"Index":ucfirst($this->uriExploded[0]);
 		$this->controllerName = $this->controller."Controller";
 		unset($this->uriExploded[0]);
 	}
 
-	public function setAction(){
+	public function setAction() {
 		$this->action =  (empty($this->uriExploded[1]))?"index":$this->uriExploded[1];
 		$this->actionName = $this->action."Action";
 		unset($this->uriExploded[1]);
 	}
 
-	public function setParams(){
+	public function setParams() {
 		$this->params = array_merge(array_values($this->uriExploded), $_POST);
 	}
 
 
-	public function checkRoute(){
+	public function checkRoute() {
 		$pathController = "App/Controllers/".$this->controllerName.".php";
 
-		if( !file_exists($pathController) ){
+		if (!file_exists($pathController)) {
 			// for debug
 			//echo "Le fichier du controller n'existe pas";
 			return false;
@@ -69,16 +67,16 @@ class Routing{
 	}
 
 
-	public function runRoute(){
-		if($this->checkRoute()){
+	public function runRoute() {
+		if ($this->checkRoute()) {
 			$controller = new $this->controllerName();
 			$controller->{$this->actionName}($this->params);
-		}else{
+		} else {
 			$this->page404();
 		}
 	}
 
-	public function page404(){
+	public function page404() {
 		require VIEWS_FOLDER_PATH."404.view.php";
 	}
 
