@@ -97,7 +97,7 @@ class ArticleModel
   {
     if ( !empty($title) && !empty($content) && !empty($autor) ) {
       $id = $this->getMaxIdArticle()+1;
-      $sql = "INSERT INTO `article` (`id`, `title`, `content`, `autor`, `active`, `created_at`, `updated_at`) 
+      $sql = "INSERT INTO `article` (`id`, `title`, `content`, `autor`, `active`, `created_at`, `updated_at`)
               VALUES (:id, :title, :content, :autor, 1, NOW(), NOW())";
       $req = $this->pdo->prepare($sql);
       $req->execute([
@@ -107,6 +107,7 @@ class ArticleModel
         'autor' => $autor,
         ]);
     }
+    return $id;
   }
 
   /**

@@ -12,9 +12,9 @@
 	</a>
 	<p>Créé par <?php echo $article['autor'] ?></p>
 	<p>Le <?php echo $article['created_at'] ?></p>
-	
-		
-	
+
+
+
 </div>
 <?php endforeach; ?>
 

@@ -30,9 +30,9 @@ class ArticleController {
 		}
 		// Si on reçoit des informations après un POST, on les enregistre
 		if ( isset($params[0]) && isset($_POST['title']) && isset($_POST['content']) ) {
-			$id=$params[0];
-			$title=$_POST['title'];
-			$content=$_POST['content'];
+			$id = $params[0];
+			$title = $_POST['title'];
+			$content = $_POST['content'];
 			$ArticleModel = new ArticleModel();
 			$ArticleModel->saveArticle($id, $title, $content);
 			// Et on redirige vers l'article en lecture
@@ -48,7 +48,7 @@ class ArticleController {
 	}
 
 	public function createAction($params)
-	{		
+	{
 		// Si on reçoit des informations après un POST, on les enregistre
 		if ( isset($_POST['title']) && isset($_POST['content']) && isset($_POST['autor'])) {
 			$title=$_POST['title'];
@@ -77,7 +77,7 @@ class ArticleController {
 		$data = [];
 		$ArticleModel = new ArticleModel();
 		$data['article'] = $ArticleModel->getOneArticle($params[0]);
-		require VIEWS_FOLDER_PATH."article.remove.php";	
+		require VIEWS_FOLDER_PATH."article.remove.php";
 	}
 
 }
