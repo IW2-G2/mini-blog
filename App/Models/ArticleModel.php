@@ -92,6 +92,8 @@ class ArticleModel
   * param : string $title
   * param : string $content
   * param : string $autor
+  *
+  * return : int $id
   */
   public function createArticle($title, $content, $autor)
   {
@@ -111,7 +113,7 @@ class ArticleModel
   }
 
   /**
-  * return : string $maxId
+  * return : int $maxId
   */
   public function getMaxIdArticle()
   {
@@ -119,7 +121,7 @@ class ArticleModel
     $req = $this->pdo->prepare($sql);
     $req->execute();
     $maxId = $req->fetch(MyPDO::FETCH_ASSOC);
-    return (string)$maxId['MAX(id)'];
+    return (int)$maxId['MAX(id)'];
   }
 
 }

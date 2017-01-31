@@ -10,43 +10,42 @@ use App\Models\ArticleModel;
 class ArticleModelTest extends \PHPUnit_Framework_TestCase
 {
 
-  private $idTest;
-
   public function testCreateArticle()
   {
     $articleModel = new ArticleModel();
-    $this->idTest = $articleModel->createArticle('testphpunit', 'testphpunit', 'testphpunit');
-    $data = $articleModel->getOneArticle($this->idTest);
+
+    $id = $articleModel->createArticle('testphpunit', 'testphpunit', 'testphpunit');
+    $data = $articleModel->getOneArticle($id);
 
     $this->assertequals($data['title'], 'testphpunit');
     $this->assertequals($data['content'], 'testphpunit');
     $this->assertequals($data['autor'], 'testphpunit');
+    return $id;
   }
 
-  public function testRemoveArticle()
+  /**
+  * @depends testCreateArticle
+  */
+  public function testEditArticle($id)
   {
     $articleModel = new ArticleModel();
-    $articleModel-> removeArticle($this->idTest);
-    $data = $articleModel->getOneArticle($this->idTest);
+    $articleModel->saveArticle($id, 'testphpunit2', 'testphpunit2');
+    $data = $articleModel->getOneArticle($id);
 
-    $this->assertequals(count($data), 0);
+    $this->assertequals($data['title'], 'testphpunit2');
+    $this->assertequals($data['content'], 'testphpunit2');
+    $this->assertequals($data['autor'], 'testphpunit');
   }
 
-
-  // public function testConcat()
-  // {
-  //   $exo = new Exo();
-  //   $response = $exo->concat('my', ' test');
-  //
-  //   $this->assertequals($response, 'my test');
-  // }
-  //
-  // public function testConcatWithError()
-  // {
-  //   $this->expectException('\RuntimeException');
-  //
-  //   $exo = new Exo();
-  //   $exo->concat('my', 2);
-  // }
+  /**
+  * @depends testCreateArticle
+  */
+  public function testRemoveArticle($id)
+  {
+    $articleModel = new ArticleModel();
+    $articleModel->removeArticle($id);
+    $data = $articleModel->getOneArticle($id);
+    $this->assertequals($data, false);
+  }
 
 }

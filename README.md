@@ -5,7 +5,7 @@
 
 Pour commencer, il faut créer un dossier 'config' à la racine du projet, puis créer un fichier 'my_setting.ini', dans ce dossier.
 
-Ensuite, il faut écrire les paramètres suivant dans le fichier 'my_setting.ini' et les adapters à votre configuration de base de données : 
+Ensuite, il faut écrire les paramètres suivant dans le fichier 'my_setting.ini' et les adapters à votre configuration de base de données :
 
 ```
 [database]
@@ -23,8 +23,10 @@ password =
 composer install
 ```
 
-ou 
+ou
 
 ```
 ./composer.phar install
 ```
+
+Attention les tests unitaire utilisent la base de données donc il faut penser à installer la base de données et à utiliser un PHP avec toute les extentions sql pour PDO.
