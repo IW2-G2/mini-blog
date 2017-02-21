@@ -74,13 +74,11 @@ class ArticleModel
 
   /**
   * param : string $id
-  * param : string $title
-  * param : string $content
   */
   public function removeArticle($id)
   {
     if ( !empty($id) ) {
-      $sql = "DELETE FROM `article` WHERE id= :id";
+      $sql = "UPDATE `article` SET active=0 WHERE id= :id";
       $req = $this->pdo->prepare($sql);
       $req->execute([
         'id' => $id,
