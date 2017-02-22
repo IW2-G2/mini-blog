@@ -1,6 +1,6 @@
 <?php require VIEWS_LAYOUT_FOLDER_PATH."header.view.php"; ?>
 
-<h1>Bienvenue sur l'index</h1>
+<h1 class="center">Bienvenue sur le Mini-Blog</h1>
 
 <?php foreach ($data['articles'] as $article): ?>
 <div class="article">

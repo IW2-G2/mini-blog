@@ -4,9 +4,43 @@
 }
 
 body {
-	background: #fff;
+  background: #fff;
 }
 
+
+/* Style du Menu */
+.menu a {
+  text-decoration: none;
+}
+
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #00897B;
+}
+
+.menu li {
+  float: left;
+  color: #fff;
+  font-size: 1.1em;
+  border-right: 1px solid black;
+}
+
+.menu li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 12px 14px;
+  text-decoration: none;
+}
+
+.menu li a:hover {
+  background-color: #25A598;
+}
+
+/* Style des forms */
 input {  
   overflow:hidden;
   width: calc(100% - 8px);
@@ -34,6 +68,7 @@ textarea {
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
+/* Style des articles */
 .article {
   margin: 18px 20px 28px 18px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -54,6 +89,7 @@ textarea {
   z-index: 50px;
 }
 
+/* style des commentaires */
 .comment {
   margin: 18px 24px 18px 24px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -68,6 +104,7 @@ textarea {
   z-index: 50px;
 }
 
-a {
-  text-decoration: none;
+/* Classes CSS */
+.center {
+  text-align: center;
 }

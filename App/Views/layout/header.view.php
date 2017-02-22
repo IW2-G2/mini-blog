@@ -6,3 +6,8 @@
 	</head>
 	
 	<body>
+	<div class="menu">
+		<ul>
+			<li><a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/mini-blog/"; ?>">Accueil</a></li>
+		</ul>
+	</div>
