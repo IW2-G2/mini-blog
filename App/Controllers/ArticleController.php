@@ -46,7 +46,7 @@ class ArticleController {
 			$ArticleModel = new ArticleModel();
 			$ArticleModel->saveArticle($id, $title, $content);
 			// Et on redirige vers l'article en lecture
-			header('location: ..' .DS. '..' .DS. 'index');
+			header('location: '.SERVER_URL);
 			return;
 		} else {
 			// Sinon on récupère l'article et on l'affiche en modification
@@ -66,7 +66,7 @@ class ArticleController {
 			$autor=$_POST['autor'];
 			$ArticleModel = new ArticleModel();
 			$ArticleModel->createArticle($title, $content, $autor);
-			header('location: ..' .DS. '..' .DS. 'index');
+			header('location: '.SERVER_URL);
 			return;
 		}
 
@@ -80,7 +80,7 @@ class ArticleController {
 				$id=$params[0];
 				$ArticleModel = new ArticleModel();
 				$ArticleModel->removeArticle($id);
-				header('location: ..' .DS. '..' .DS. 'index');
+				header('location: '.SERVER_URL);
 				return;
 			}
 		}

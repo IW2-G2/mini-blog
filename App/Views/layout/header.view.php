@@ -8,6 +8,7 @@
 	<body>
 	<div class="menu">
 		<ul>
-			<li><a href="<?php echo "http://" . $_SERVER['SERVER_NAME'] . "/mini-blog/"; ?>">Accueil</a></li>
+			<li><a href="<?php echo SERVER_URL; ?>">Accueil</a></li>
+			<li><a href="<?php echo SERVER_URL. "article/create"; ?>">Nouvel article</a></li>
 		</ul>
 	</div>
