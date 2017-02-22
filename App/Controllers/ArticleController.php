@@ -16,6 +16,15 @@ class ArticleController {
 		$ArticleModel = new ArticleModel();
 		$CommentModel = new CommentModel();
 
+		if ( isset($params[0]) && isset($_POST['author']) 
+		  && isset($_POST['title']) && isset($_POST['comment']) ) {
+		  	$article_id=$params[0];
+		  	$autor=$_POST['author'];
+		  	$title=$_POST['title'];
+		  	$content=$_POST['comment'];
+		  	$CommentModel->createComment($title, $content, $autor, $article_id);
+		}
+
 		$data = [];
 		$data['article'] = $ArticleModel->getOneArticle($params[0]);
 		$data['comment'] = $CommentModel->getListOfComment($params[0]);

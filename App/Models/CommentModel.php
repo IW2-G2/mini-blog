@@ -16,6 +16,31 @@ class CommentModel
   }
 
   /**
+  * param : string $title
+  * param : string $content
+  * param : string $autor
+  *
+  * return : int $id
+  */
+  public function createComment($title, $content, $autor, $article_id)
+  {
+    if ( !empty($title) && !empty($content) && !empty($autor) && !empty($article_id) ) {
+      $id = $this->getMaxIdComment()+1;
+      $sql = "INSERT INTO `comment` (`id`, `title`, `content`, `autor`, `article_id`, `created_at`, `updated_at`)
+              VALUES (:id, :title, :content, :autor, :article_id, NOW(), NOW())";
+      $req = $this->pdo->prepare($sql);
+      $req->execute([
+        'id' => $id,
+        'title' => $title,
+        'content' => $content,
+        'autor' => $autor,
+        'article_id' => $article_id
+        ]);
+    }
+    return $id;
+  }
+
+  /**
   * param : int $limit
   * param : int $offset
   * return : array
@@ -43,7 +68,17 @@ class CommentModel
     } else {
       return null;
     }
-
   }
 
+  /**
+  * return : int $maxId
+  */
+  public function getMaxIdComment()
+  {
+    $sql = "SELECT MAX(id) FROM `comment`";
+    $req = $this->pdo->prepare($sql);
+    $req->execute();
+    $maxId = $req->fetch(MyPDO::FETCH_ASSOC);
+    return (int)$maxId['MAX(id)'];
+  }
 }

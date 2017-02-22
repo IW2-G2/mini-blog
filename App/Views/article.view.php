@@ -32,12 +32,15 @@
 
 <?php // Affiche le bloc de saisie d'un nouveau commentaire ?>
 <form action="" method="post" id="comment_form">
-	<label for="author">Nom (requis)</label>
-	<p><input class="new_comment" type="text" name="author" value=""></p>
+	<label for="author">Nom</label>
+	<p><input type="text" name="author" value=""></p>
 
-	<p><textarea class="new_comment" name="comment"></textarea></p>
+	<label for="title">Title</label>
+	<p><input type="text" name="title" value=""></p>
 
-	<p><input class="new_comment" name="submit" type="submit" value="Envoyer"></p>
+	<p><textarea name="comment"></textarea></p>
+
+	<p><input name="submit" type="submit" value="Envoyer"></p>
 </form>
 
 <?php require VIEWS_LAYOUT_FOLDER_PATH."footer.view.php"; ?>
