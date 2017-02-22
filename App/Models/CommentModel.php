@@ -20,7 +20,7 @@ class CommentModel
   * param : string $content
   * param : string $autor
   *
-  * return : int $id
+  * return : string $id
   */
   public function createComment($title, $content, $autor, $article_id)
   {
@@ -41,6 +41,39 @@ class CommentModel
   }
 
   /**
+  * param : string $id
+  * param : string $title
+  * param : string $content
+  */
+  public function saveComment($id, $title, $content)
+  {
+    if ( !empty($id) && !empty($title) && !empty($content) ) {
+      $sql = "UPDATE `comment` SET title= :title , content= :content WHERE id= :id";
+      $req = $this->pdo->prepare($sql);
+      $req->execute([
+        'id' => $id,
+        'title' => $title,
+        'content' => $content,
+        ]);
+    }
+  }
+
+  /**
+  * param : string $id
+  */
+  public function removeComment($id)
+  {
+    if ( !empty($id) ) {
+      $sql = "DELETE FROM `comment` WHERE id= :id";
+      $req = $this->pdo->prepare($sql);
+      $req->execute([
+        'id' => $id,
+        ]);
+    }
+  }
+
+  /**
+  * param : int $id
   * param : int $limit
   * param : int $offset
   * return : array
@@ -59,6 +92,25 @@ class CommentModel
       return $comment;
     } else if (!empty($id)) {
       $sql = "SELECT * FROM `comment` WHERE article_id = :id";
+      $req = $this->pdo->prepare($sql);
+      $req->execute([
+        'id' => $id,
+        ]);
+      $comment = $req->fetchAll(MyPDO::FETCH_ASSOC);
+      return $comment;
+    } else {
+      return null;
+    }
+  }
+
+  /**
+  * param : string $id
+  * return : array
+  */
+  public function getComment($id)
+  {
+    if (!empty($id)) {
+      $sql = "SELECT * FROM `comment` WHERE id = :id";
       $req = $this->pdo->prepare($sql);
       $req->execute([
         'id' => $id,

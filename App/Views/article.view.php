@@ -14,7 +14,7 @@
 		href="<?php echo APP_BASE_PATH."article/edit/".$data['article']['id'] ?>">
 		<img src="<?php echo APP_BASE_PATH ?>/images/picto/edit.png" alt="Editer" height="34" width="34" border="0">
 	</a>
-	<a 	title="Editer <?php echo $data['article']['title'] ?>" 
+	<a 	title="Supprimer <?php echo $data['article']['title'] ?>" 
 		href="<?php echo APP_BASE_PATH."article/remove/".$data['article']['id'] ?>">
 		<img src="<?php echo APP_BASE_PATH ?>/images/picto/cross-l.png" alt="Supprimer" height="34" width="34" border="0">
 	</a>
@@ -23,8 +23,12 @@
 <?php // Affiche tous les commentaires liés à l'article ?>
 <?php foreach ($data['comment'] as $comment): ?>
 <div class="comment">
-	<h2><?php echo $comment['title'] ?></h2>
+	<a title="title" href="<?php echo SERVER_URL."comment/view/".$comment['id']; ?>">
+		<h2><?php echo $comment['title'] ?></h2>
+	</a>
 	<p><?php echo $comment['content'] ?></p>
+
+	<br>
 	<p>Créé par <?php echo $comment['autor'] ?></p>
 	<p>Créé le  <?php echo $comment['created_at'] ?></p>
 </div>

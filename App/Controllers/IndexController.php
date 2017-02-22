@@ -16,9 +16,4 @@ class IndexController {
 		require VIEWS_FOLDER_PATH."index.view.php";
 	}
 
-	public function welcomeAction($params)
-	{
-		  echo "Welcome";
-	}
-
 }
