@@ -10,10 +10,12 @@ header("HTTP/1.0 404 Not Found");
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>Page 404</title>
+    <meta charset="UTF-8">
+    <title>Erreur 404 : Page introuvable</title>
   </head>
   <body>
-     <p> Page404 </p>
+	<p> Erreur 404! </p>
+	<p> La page que vous avez demandé se cache ailleurs... </p>
+	=> <a href="<?php echo SERVER_URL; ?>">Retourner à l'accueil</a> <=
   </body>
 </html>
