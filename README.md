@@ -1,4 +1,4 @@
-# Mini-llog
+# Mini-Blog
 
 
 ## Installation
@@ -29,4 +29,4 @@ ou
 ./composer.phar install
 ```
 
-Attention les tests unitaire utilisent la base de données donc il faut penser à installer la base de données et à utiliser un PHP avec toute les extentions sql pour PDO.
+Attention, les tests unitaires utilisent la base de données, donc il faut penser à installer la base de données et à utiliser un PHP avec toute les extentions SQL pour PDO.
